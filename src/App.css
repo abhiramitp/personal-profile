@@ -1,6 +1,23 @@
+:root {
+    --primary-bg: #161517;
+    --secondary-bg: #14131a;
+    --accent-color: #207448;
+    --text-primary: rgb(157, 157, 161);
+    --text-secondary: #8b8a91;
+    --card-bg: rgb(255, 255, 255);
+    --hover-bg: #2e2e3021;
+    --transition-speed: 0.3s;
+    --border-radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 .App {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: var(--primary-bg);
 }
 
 
@@ -11,7 +28,12 @@
 body {
     padding: 0;
     margin: 0;
-
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
 }
 
 
@@ -27,9 +49,9 @@ body {
 
 
 }
-.contactbtn{
-    background-color: #207448;
-    padding: 8px;
+.contactbtn {
+    background-color: var(--accent-color);
+    padding: 8px 16px;
     margin-top: 1rem;
     margin-right: 2rem;
     border-radius: 5px;
@@ -38,8 +60,25 @@ body {
     border: none;
     color: rgb(182, 179, 179);
     font-size: 15px;
-    
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.contactbtn:hover {
+    background-color: #1a5d38;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(32, 116, 72, 0.3);
+}
+
+.contactbtn:active {
+    transform: translateY(0);
+}
+
+.contactbtn:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 .SidebarList {
     height: auto;
@@ -65,10 +104,15 @@ body {
 }
 
 
-.SidebarRow:hover{
-   
+.SidebarRow:hover {
     transform: translateY(-10%);
     cursor: pointer;
+    background-color: var(--hover-bg);
+}
+
+.SidebarRow:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: -2px;
 }
 
 .SidebarList #active {
@@ -98,7 +142,22 @@ body {
     margin-bottom: 5px;
     margin-left: 80%;
     cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    transition: transform var(--transition-speed) ease;
+    padding: 8px;
+    border-radius: 4px;
+}
 
+.close:hover {
+    transform: scale(1.1);
+    background-color: var(--hover-bg);
+}
+
+.close:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 /* media query start */
@@ -471,7 +530,8 @@ body {
 .card-content .card-image {
     width: 250px;
     height: 150px;
-
+    overflow: hidden;
+    position: relative;
 }
 
 .card-image img {
@@ -479,6 +539,21 @@ body {
     height: 100%;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+    transition: transform 0.4s ease;
+    object-fit: cover;
+}
+
+.card-content:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.card-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .card-content .card-text {
@@ -752,11 +827,17 @@ body {
 
 
 }
-.more-project-details:hover{
-   
-    transform: translateY(1%);
+.more-project-details:hover {
+    transform: translateY(-2px);
     background-color: #1312132c;
     cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.more-project-details:focus-within {
+    background-color: #1312132c;
+    outline: 2px solid var(--accent-color);
+    outline-offset: -2px;
 }
 
 /* media quenry */
